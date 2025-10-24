@@ -30,7 +30,7 @@ Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deseru
     ];
 
     return (
-        <div className="bg-[#363C43] rounded-xl p-5 shadow-neuLight relative max-w-4xl w-full mx-auto">
+        <div className="bg-[#363C43] rounded-xl shadow-[4px_4px_8px_#1a1d20] p-5 shadow-neuLight relative max-w-4xl w-full mx-auto">
             {/* Top section: icon + tabs */}
             <div className="flex items-center justify-between mb-4 gap-3">
                 {/* Left icon */}
@@ -102,7 +102,7 @@ Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deseru
                 </div>
 
                 {/* Content */}
-                <div className="flex-1 text-sm text-textmuted leading-7 max-h-64 h-40 overflow-y-auto pr-3 custom-scrollbar">
+                <div className="flex-1 text-lg text-textmuted leading-[-3] max-h-64 h-40 overflow-y-auto pr-3 custom-scrollbar">
                     {content[active]}
                 </div>
             </div>
