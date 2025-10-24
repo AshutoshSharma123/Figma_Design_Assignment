@@ -1,6 +1,11 @@
+/* 1️⃣ Imports first */
+@import "tailwind-scrollbar-utilities";
+
+/* 2️⃣ Tailwind directives in order */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 
 body {
   @apply bg-gray-900 text-gray-400 min-h-screen font-sans;
