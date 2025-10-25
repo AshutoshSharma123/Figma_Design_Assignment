@@ -5,16 +5,26 @@ export default function GalleryWidget() {
     const inpRef = useRef();
     const scrollRef = useRef(null);
 
-    // Load saved images
     useEffect(() => {
         const saved = localStorage.getItem("galleryImgs");
-        if (saved) setImages(JSON.parse(saved));
+        if (saved) {
+            try {
+                const parsed = JSON.parse(saved);
+                console.log("Loaded images:", parsed);
+                setImages(parsed);
+            } catch (err) {
+                console.error("Failed to parse saved images:", err);
+            }
+        }
     }, []);
 
-    // Save to localStorage
     useEffect(() => {
-        localStorage.setItem("galleryImgs", JSON.stringify(images));
+        if (images.length) {
+            localStorage.setItem("galleryImgs", JSON.stringify(images));
+            console.log("Saved images:", images);
+        }
     }, [images]);
+
 
     const onAdd = (e) => {
         const file = e.target.files[0];
@@ -42,11 +52,35 @@ export default function GalleryWidget() {
             {/* Header Section */}
             <div className="flex flex-col sm:flex-row items-center justify-between mb-4 gap-3">
                 {/* Icon */}
-                <div className="shadow-neuInset shadow-[4px_4px_8px_#1a1d20] bg-[#2f3437] rounded-full flex items-center justify-center text-white w-7 h-7">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white">
-                        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                        <path d="M9 9C9 5.49997 14.5 5.5 14.5 9C14.5 11.5 12 10.9999 12 13.9999" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                        <path d="M12 18.01L12.01 17.9989" strokeWidth="1.5" strokeLinecap="round" />
+                <div className="shadow-neuInset shadow-[4px_4px_8px_#1a1d20] bg-[#2f3437] rounded-full flex items-center justify-center text-white w-9 h-9">
+                    <svg
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="text-white"
+                    >
+                        <path
+                            d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
+                            stroke="currentColor"
+                            strokeWidth="1.5"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                        />
+                        <path
+                            d="M9 9C9 5.49997 14.5 5.5 14.5 9C14.5 11.5 12 10.9999 12 13.9999"
+                            stroke="currentColor"
+                            strokeWidth="1.5"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                        />
+                        <path
+                            d="M12 18.01L12.01 17.9989"
+                            stroke="currentColor"
+                            strokeWidth="1.5"
+                            strokeLinecap="round"
+                        />
                     </svg>
                 </div>
 
@@ -57,7 +91,7 @@ export default function GalleryWidget() {
                     </div>
 
                     <div className="flex items-center gap-3 w-full sm:w-auto justify-between sm:justify-end">
-                        <label className="flex items-center justify-center gap-2 px-4 py-2 text-xs rounded-full bg-[#2f3437] shadow-[4px_4px_8px_#1a1d20] cursor-pointer hover:scale-[1.02] transition">
+                        <label className="flex items-center justify-center gap-2 px-4 py-2 text-[0.5rem] rounded-full bg-[#2f3437] shadow-[4px_4px_6px_#1a1d20,_-3px_-3px_10px_#4a4e54] cursor-pointer hover:scale-[1.02] transition">
                             + ADD IMAGE
                             <input ref={inpRef} type="file" accept="image/*" onChange={onAdd} className="hidden" />
                         </label>
@@ -66,18 +100,20 @@ export default function GalleryWidget() {
                         <div className="hidden sm:flex gap-2">
                             <button
                                 onClick={scrollLeft}
-                                className="w-6 h-6 flex items-center justify-center rounded-full shadow-[4px_4px_8px_#1a1d20] hover:scale-110 transition"
+                                className="w-5 h-5 flex items-center justify-center rounded-full    shadow-[4px_4px_6px_#1a1d20,_-3px_-3px_6px_#4a4e54] hover:scale-110 transition"
                             >
-                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="#a9abae">
-                                    <path d="M14 17 8 12l6-5v10z" />
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8" />
                                 </svg>
                             </button>
                             <button
                                 onClick={scrollRight}
-                                className="w-6 h-6 flex items-center justify-center rounded-full shadow-[4px_4px_8px_#1a1d20] hover:scale-110 transition"
+                                className="w-5 h-5 flex items-center justify-center rounded-full shadow-[4px_4px_6px_#1a1d20,_-3px_-3px_6px_#4a4e54] hover:scale-110 transition"
                             >
-                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="#a9abae">
-                                    <path d="m10 7 6 5-6 5V7z" />
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8" />
                                 </svg>
                             </button>
                         </div>
@@ -86,17 +122,27 @@ export default function GalleryWidget() {
             </div>
 
             {/* Gallery Section */}
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row gap-4 ">
                 {/* Left icon */}
-                <div className="flex-shrink-0 flex items-center justify-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="#808080" stroke="#595c61ff">
-                        <rect x="4" y="3" width="6" height="6" />
-                        <rect x="10" y="3" width="6" height="6" />
-                        <rect x="4" y="10" width="6" height="6" />
-                        <rect x="10" y="10" width="6" height="6" />
-                        <rect x="4" y="17" width="6" height="6" />
-                        <rect x="10" y="17" width="6" height="6" />
-                    </svg>
+
+
+                <div className="flex flex-col gap-[0.1rem]  items-center justify-center">
+                    <div className="flex gap-[0.1rem]">
+                        <div className="w-2 h-2 bg-[#808080]"></div>
+                        <div className="w-2 h-2 bg-[#808080]"></div>
+
+                    </div>
+                    <div className="flex gap-[0.1rem]">
+                        <div className="w-2 h-2 bg-[#808080]"></div>
+                        <div className="w-2 h-2 bg-[#808080]"></div>
+
+                    </div>
+                    <div className="flex gap-[0.1rem]">
+                        <div className="w-2 h-2 bg-[#808080]"></div>
+                        <div className="w-2 h-2 bg-[#808080]"></div>
+
+                    </div>
+
                 </div>
 
                 {/* Scrollable Images */}
