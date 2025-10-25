@@ -48,18 +48,20 @@ export default function GalleryWidget() {
     const placeholders = [1, 2, 3];
 
     return (
-        <div className="bg-[#363C43] rounded-xl p-5 sm:p-6 shadow-[4px_4px_8px_#1a1d20] relative max-w-4xl w-full mx-auto">
+        <div className="bg-[#363C43] rounded-xl p-5 sm:p-3 shadow-[4px_4px_8px_#1a1d20] relative max-w-4xl w-full mx-auto">
             {/* Header Section */}
-            <div className="flex flex-col sm:flex-row items-center justify-between mb-4 gap-3">
+            <div className="flex flex-col sm:flex-row items-center justify-between  mb-4 gap-0">
                 {/* Icon */}
-                <div className="shadow-neuInset shadow-[4px_4px_8px_#1a1d20] bg-[#2f3437] rounded-full flex items-center justify-center text-white w-9 h-9">
+                <div className="shadow-neuInset   rounded-full flex  justify-center  text-white w-9 h-9">
                     <svg
                         width="24"
                         height="24"
                         viewBox="0 0 24 24"
                         fill="none"
+
+
                         xmlns="http://www.w3.org/2000/svg"
-                        className="text-white"
+                        className="text-white shadow-[4px_4px_6px_#1a1d20,_-3px_-3px_6px_#4a4e54] rounded-full "
                     >
                         <path
                             d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
@@ -86,7 +88,7 @@ export default function GalleryWidget() {
 
                 {/* Title + Actions */}
                 <div className="flex flex-col sm:flex-row items-center w-full justify-between gap-3">
-                    <div className="bg-[#202023] text-white px-6 py-2 rounded-[1rem] text-sm font-medium text-center w-full sm:w-auto">
+                    <div className="bg-[#202023] text-white px-6 py-1 rounded-[1rem] text-lg font-medium text-center w-full sm:w-auto">
                         Gallery
                     </div>
 
@@ -122,7 +124,7 @@ export default function GalleryWidget() {
             </div>
 
             {/* Gallery Section */}
-            <div className="flex flex-col sm:flex-row gap-4 ">
+            <div className="flex flex-col sm:flex-row gap-6 ">
                 {/* Left icon */}
 
 

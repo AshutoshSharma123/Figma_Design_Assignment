@@ -47,7 +47,7 @@ Implemented CI/CD pipelines.`,
     ], []);
 
     return (
-        <div className="bg-[#363C43] rounded-xl shadow-[4px_4px_8px_#1a1d20] p-5 max-w-4xl w-full mx-auto">
+        <div className="bg-[#363C43] rounded-xl shadow-[4px_4px_8px_#1a1d20] p-3 max-w-4xl w-full mx-auto">
             {/* Top section: icon + tabs */}
             <div className="flex  justify-between mb-3 gap-0">
                 {/* Left icon */}
